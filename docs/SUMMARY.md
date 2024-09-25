@@ -4,15 +4,15 @@
 
 * [What is Terraform ? How it works ?](README.md)
 * [Architecture](infrastructure-provisioning/architecture.md)
-* [Providers](infrastructure-provisioning/providers.md)
-* [Resources & Data Sources](infrastructure-provisioning/resources-and-data-sources.md)
-* [Variables & Output Values](infrastructure-provisioning/variables-and-output-values.md)
-* [Environment Variables in Terraform](infrastructure-provisioning/environment-variables-in-terraform.md)
-* [Terraform Commands](infrastructure-provisioning/terraform-commands.md)
 * [Terraform State](infrastructure-provisioning/terraform-state.md)
-* [Provisioners](infrastructure-provisioning/provisioners.md)
-* [Modules](infrastructure-provisioning/modules.md)
-* [Remote State](infrastructure-provisioning/remote-state.md)
+* [Terraform: Installation & Basic Usage](infrastructure-provisioning/terraform-installation-and-basic-usage.md)
+* [Terraform: HCL (HashiCorp Configuration Language) Blocks](infrastructure-provisioning/terraform-hcl-hashicorp-configuration-language-blocks.md)
+* [Terraform Hands On](infrastructure-provisioning/terraform-hands-on/README.md)
+  * [Deploying VPC/Subnets with Terraform on AWS](infrastructure-provisioning/terraform-hands-on/deploying-vpc-subnets-with-terraform-on-aws.md)
+  * [Security Groups, NAT & Internet Gateways, and Route Tables with Terraform on AWS](infrastructure-provisioning/terraform-hands-on/security-groups-nat-and-internet-gateways-and-route-tables-with-terraform-on-aws.md)
+  * [Modules Usage and Sources](infrastructure-provisioning/terraform-hands-on/modules-usage-and-sources.md)
+  * [Module Inputs and Outputs](infrastructure-provisioning/terraform-hands-on/module-inputs-and-outputs.md)
+  * [Refactor to production ready](infrastructure-provisioning/terraform-hands-on/refactor-to-production-ready.md)
 
 ## Configuration Management
 

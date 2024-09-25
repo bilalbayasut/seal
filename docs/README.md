@@ -8,7 +8,7 @@ See trailer slides here to get a glimpse of [what is terraform](https://docs.goo
 
 Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share.
 
-### How does Terraform works ?
+## How does Terraform works ?
 
 Terraform is able to creates and manages resources on cloud platforms through what it's called by **Providers**. Providers act as a bridge among terraform and cloud platforms via their API's.
 
@@ -22,7 +22,7 @@ Terraform workflow consist of threes stages :&#x20;
 
 <figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-### Why Terraform ?
+## Why Terraform ?
 
 *   **Manage any infrastructure:** Terraform has providers that can talk to various cloud platforms that we can already use in the [Terraform Registry](https://registry.terraform.io/). Terraform takes an immutable approach to infrastructure.\
 
