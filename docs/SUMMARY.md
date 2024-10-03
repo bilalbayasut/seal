@@ -9,8 +9,8 @@
 * [Terraform: HCL (HashiCorp Configuration Language) Blocks](infrastructure-provisioning/terraform-hcl-hashicorp-configuration-language-blocks.md)
 * [Terraform Hands On](infrastructure-provisioning/terraform-hands-on/README.md)
   * [Task 1 : Terraform](infrastructure-provisioning/terraform-hands-on/deploying-vpc-subnets-with-terraform-on-aws.md)
-  * [Task 1 : Terraform](infrastructure-provisioning/terraform-hands-on/security-groups-nat-and-internet-gateways-and-route-tables-with-terraform-on-aws.md)
-  * [Task 2: Docker](infrastructure-provisioning/terraform-hands-on/modules-usage-and-sources.md)
+  * [Task 2 : Docker](infrastructure-provisioning/terraform-hands-on/security-groups-nat-and-internet-gateways-and-route-tables-with-terraform-on-aws.md)
+  * [Task 3: Docker Hub](infrastructure-provisioning/terraform-hands-on/modules-usage-and-sources.md)
   * [Task 4: Wordpress Live](infrastructure-provisioning/terraform-hands-on/module-inputs-and-outputs.md)
   * [Refactor to production ready](infrastructure-provisioning/terraform-hands-on/refactor-to-production-ready.md)
 
