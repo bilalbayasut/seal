@@ -1,4 +1,10 @@
-# Deploying VPC/Subnets with Terraform on AWS
+---
+description: >-
+  Create a Terraform script to deploy a Virtual Machine (VM) in a public subnet
+  and deploy the RDS in a private subnet.
+---
+
+# Task 1 : Terraform
 
 ## Lets Generate AWS Diagram using mingrammer!
 
