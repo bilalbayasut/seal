@@ -1,5 +1,5 @@
 ---
-description: Using Terraform
+description: Understanding terraform
 ---
 
 # What is Terraform ? How it works ?
@@ -12,7 +12,7 @@ Terraform is an infrastructure as code tool that lets you define both cloud and 
 
 Terraform is able to creates and manages resources on cloud platforms through what it's called by **Providers**. Providers act as a bridge among terraform and cloud platforms via their API's.
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Terraform workflow consist of threes stages :&#x20;
 
@@ -20,14 +20,14 @@ Terraform workflow consist of threes stages :&#x20;
 2. **Plan:**  Terraform create execution plan simulating what resources will be changed.
 3. **Apply:** Terraform performs changes that was planned, on approval.
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Why Terraform ?
 
 *   **Manage any infrastructure:** Terraform has providers that can talk to various cloud platforms that we can already use in the [Terraform Registry](https://registry.terraform.io/). Terraform takes an immutable approach to infrastructure.\
 
 
-    <figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src=".gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 * **Track your infrastructure:** Terraform saves a representation of a state of your infra in a state file, which act as a source of truth to your infra. Terraform uses the [state file](https://developer.hashicorp.com/terraform/language/state) to determine the changes to make to your infrastructure so that it will match your configuration.
 * **Automate changes:** Terraform configuration files (\*.tf) are declarative, meaning that they describe what your infra are intended to be. You don't need to write step-by step instructions to create/modify resources as terraforms handles the underlying logic under the hood.
 * **Standardize configurations:** Terraform has a feature called [modules](https://developer.hashicorp.com/terraform/language/modules), that enables us to define configurable collections of infrastructure. i.e.:  we can make k8s module that consist of multiple resources like creating, ingress, services, etc.
