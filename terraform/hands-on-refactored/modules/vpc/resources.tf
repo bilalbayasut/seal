@@ -1,82 +1,83 @@
 #public subnets
 resource "aws_subnet" "public1" {
-  depends_on = [module.vpc]
-  vpc_id     = module.vpc.vpc_id
-  cidr_block = "10.100.1.0/24"
+  depends_on        = [module.vpc]
+  vpc_id            = module.vpc.vpc_id
+  cidr_block        = "10.100.1.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "upgrad-public-1"
+    Name = "this-public-1"
   }
 }
 resource "aws_subnet" "public2" {
-  depends_on = [module.vpc]
-  vpc_id     = module.vpc.vpc_id
-  cidr_block = "10.100.2.0/24"
+  depends_on        = [module.vpc]
+  vpc_id            = module.vpc.vpc_id
+  cidr_block        = "10.100.2.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "upgrad-public-2"
+    Name = "this-public-2"
   }
 }
 
 #private subnets
 resource "aws_subnet" "private1" {
-  depends_on = [module.vpc]
-  vpc_id     = module.vpc.vpc_id
-  cidr_block = "10.100.3.0/24"
+  depends_on        = [module.vpc]
+  vpc_id            = module.vpc.vpc_id
+  cidr_block        = "10.100.3.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "upgrad-private-1"
+    Name = "this-private-1"
   }
 }
 resource "aws_subnet" "private2" {
-  depends_on = [module.vpc]
-  vpc_id     = module.vpc.vpc_id
-  cidr_block = "10.100.4.0/24"
+  depends_on        = [module.vpc]
+  vpc_id            = module.vpc.vpc_id
+  cidr_block        = "10.100.4.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "upgrad-private-2"
+    Name = "this-private-2"
   }
 }
 
 #internet gateway
-resource "aws_internet_gateway" "igw" {
-  depends_on = [module.vpc]
-  vpc_id = module.vpc.vpc_id
+## This will be redundant
+# resource "aws_internet_gateway" "igw" {
+#   depends_on = [module.vpc]
+#   vpc_id = module.vpc.vpc_id
 
-  tags = {
-    Name = "upgrad-igw"
-  }
-}
+#   tags = {
+#     Name = "upgrad-igw"
+#   }
+# }
 
 #elastic ip
 resource "aws_eip" "eip" {
   depends_on = [module.vpc]
-  domain = "vpc"
+  domain     = "vpc"
 }
 
 #nat gateway
 resource "aws_nat_gateway" "nat" {
-  depends_on = [module.vpc]
+  depends_on    = [module.vpc]
   allocation_id = aws_eip.eip.id
   subnet_id     = aws_subnet.public1.id
 
   tags = {
-    Name = "upgrad-nat"
+    Name = "this-nat"
   }
 }
 
 #public route table
 resource "aws_route_table" "public" {
   depends_on = [module.vpc]
-  vpc_id = module.vpc.vpc_id
+  vpc_id     = module.vpc.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    gateway_id = module.vpc.igw_id
   }
 
   tags = {
@@ -87,7 +88,7 @@ resource "aws_route_table" "public" {
 #private route table
 resource "aws_route_table" "private" {
   depends_on = [module.vpc]
-  vpc_id = module.vpc.vpc_id
+  vpc_id     = module.vpc.vpc_id
 
   route {
     cidr_block     = "0.0.0.0/0"
@@ -101,29 +102,29 @@ resource "aws_route_table" "private" {
 
 #route table association
 resource "aws_route_table_association" "public1" {
-  depends_on = [module.vpc]
+  depends_on     = [module.vpc]
   subnet_id      = aws_subnet.public1.id
   route_table_id = aws_route_table.public.id
 }
 resource "aws_route_table_association" "public2" {
-  depends_on = [module.vpc]
+  depends_on     = [module.vpc]
   subnet_id      = aws_subnet.public2.id
   route_table_id = aws_route_table.public.id
 }
 resource "aws_route_table_association" "private1" {
-  depends_on = [module.vpc]
+  depends_on     = [module.vpc]
   subnet_id      = aws_subnet.private1.id
   route_table_id = aws_route_table.private.id
 }
 resource "aws_route_table_association" "private2" {
-  depends_on = [module.vpc]
+  depends_on     = [module.vpc]
   subnet_id      = aws_subnet.private2.id
   route_table_id = aws_route_table.private.id
 }
 
 #security group
 resource "aws_security_group" "allow_ssh" {
-  depends_on = [module.vpc]
+  depends_on  = [module.vpc]
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic"
   vpc_id      = module.vpc.vpc_id
@@ -177,7 +178,7 @@ resource "aws_security_group" "rds_security_group" {
 
 #EC2
 resource "aws_instance" "wordpress" {
-  depends_on = [module.vpc]
+  depends_on                  = [module.vpc]
   ami                         = "ami-053b0d53c279acc90"
   instance_type               = "t2.micro"
   key_name                    = aws_key_pair.deployer.key_name

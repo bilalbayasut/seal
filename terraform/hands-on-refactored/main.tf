@@ -1,31 +1,32 @@
 module "vpc" {
-  source                = "./modules/vpc"
-  vpc_name = var.vpc_name
-  env=var.env
-  key_name=var.key_name
-  cidr = var.cidr
-  azs             = var.azs
-  private_subnets = var.private_subnets
-  public_subnets  = var.public_subnets
+  source             = "./modules/vpc"
+  vpc_name           = var.vpc_name
+  env                = var.env
+  key_name           = var.key_name
+  cidr               = var.cidr
+  azs                = var.azs
+  private_subnets    = var.private_subnets
+  public_subnets     = var.public_subnets
   enable_nat_gateway = var.enable_nat_gateway
   enable_vpn_gateway = var.enable_vpn_gateway
 }
 module "rds" {
-  source                = "./modules/rds"
+  source                 = "./modules/rds"
   depends_on             = [module.vpc]
-  create_monitoring_role = true
-  db_name = var.database_name
-  database_password = var.database_password
-  database_port = var.database_port
-  database_user = var.database_user
-  rds_tags_environment = var.env
-  backup_window = "03:00-06:00"
-  monitoring_role_name = "MyRDSMonitoringRole"
-  monitoring_interval = "30"
-  maintenance_window = "Mon:00:00-Mon:03:00"
-  key_name = var.key_name
-  vpc_security_group_ids = module.vpc.vpc_security_group_ids
-  subnet_ids = module.vpc.private_subnets
+  create_monitoring_role = false
+  db_name                = var.database_name
+  database_password      = var.database_password
+  database_port          = var.database_port
+  database_user          = var.database_user
+  rds_tags_environment   = var.env
+  backup_window          = "03:00-06:00"
+  monitoring_role_name   = "MyRDSMonitoringRole"
+  monitoring_interval    = "30"
+  maintenance_window     = "Mon:00:00-Mon:03:00"
+  key_name               = var.key_name
+  vpc_security_group_ids = module.vpc.rds_security_group_ids
+  subnet_ids             = module.vpc.private_subnets
+  db_subnet_group_name   = "rds-subnet-group"
 
   # dentifier = var.database_name
   # # engine            = "mysql"

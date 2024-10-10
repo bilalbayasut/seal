@@ -28,24 +28,24 @@ variable "database_port" {
   description = "database_port"
   type        = string
 }
-variable "maintenance_window"{
+variable "maintenance_window" {
   description = "maintenance_window"
   type        = string
   default     = "Mon:00:00-Mon:03:00"
 }
-variable "backup_window"{
+variable "backup_window" {
   description = "backup_window"
   type        = string
 }
-variable "monitoring_interval"{
+variable "monitoring_interval" {
   description = "monitoring_interval"
   type        = string
 }
-variable "monitoring_role_name"{
+variable "monitoring_role_name" {
   description = "monitoring_role_name"
   type        = string
 }
-variable "create_monitoring_role"{
+variable "create_monitoring_role" {
   description = "create_monitoring_role"
   type        = string
 }
@@ -57,4 +57,9 @@ variable "subnet_ids" {
 variable "vpc_security_group_ids" {
   description = "vpc_security_group_ids"
   type        = list(string)
+}
+
+variable "db_subnet_group_name" {
+  description = "db_subnet_group_name"
+  type        = string
 }
