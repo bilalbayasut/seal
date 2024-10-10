@@ -1,4 +1,4 @@
-# Modules Usage and Sources
+# Task 3: Docker Hub
 
 To save your Docker container image to Docker Hub, follow these steps:
 
@@ -6,9 +6,9 @@ To save your Docker container image to Docker Hub, follow these steps:
 2. **Docker Login**: Login to your Docker Hub account using the following command:\
    `docker login -u <YOURUSERNAME>`
 3. **Tag the Image**: Before pushing the image to Docker Hub, you need to tag it with your Docker Hub username and the desired repository name. The format for tagging an image is:\
-   `docker tag wordpress:latest <YOURUSERNAME>/wordpress:new_version`
+   `docker tag my-wordpress-image:latest YOUR_DOCKER_HUB_USERNAME/wordpress:latest`
 4. **Push the Image**: After tagging the image, push it to Docker Hub using the following command:\
-   `docker push YOUR_DOCKER_HUB_USERNAME/wordpress:new_version`\
+   `docker push YOUR_DOCKER_HUB_USERNAME/wordpress:latest`\
    This will push the tagged image to your Docker Hub repository.
 5. **Verify on Docker Hub**: Finally, go to your Docker Hub account at [**https://hub.docker.com**](https://hub.docker.com/) and navigate to your repository. You should see the pushed image listed in the repository.
 

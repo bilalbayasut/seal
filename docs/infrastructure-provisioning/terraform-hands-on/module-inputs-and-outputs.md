@@ -3,7 +3,7 @@
 Finally, run the following command to deploy the WordPress stack. Make sure that you are running below command where the **`docker-compose.yml`** file saved.
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 This will download the required Docker images and start Wordpress container along with Apache Webserver and PHP. You should be able to access the WordPress site by visiting **`http://EC2_publicip`** in your web browser.
