@@ -1,5 +1,5 @@
 module "vpc" {
-  source                = "../modules/vpc"
+  source                = "./modules/vpc"
   vpc_name = var.vpc_name
   env=var.env
   key_name=var.key_name
@@ -11,7 +11,7 @@ module "vpc" {
   enable_vpn_gateway = var.enable_vpn_gateway
 }
 module "rds" {
-  source                = "../modules/rds"
+  source                = "./modules/rds"
   depends_on             = [module.vpc]
   create_monitoring_role = true
   db_name = var.database_name
