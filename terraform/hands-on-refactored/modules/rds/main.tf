@@ -13,12 +13,13 @@ module "db" {
   allocated_storage   = 5
   skip_final_snapshot = true
   db_name             = var.db_name
-  username            = var.database_user
-  password            = var.database_password
-  port                = var.database_port
+  username            = var.username
+  password            = var.password
+  port                = var.port
 
-  iam_database_authentication_enabled = true
+  iam_database_authentication_enabled = false
   storage_encrypted                   = false
+  manage_master_user_password         = false
 
   vpc_security_group_ids = var.vpc_security_group_ids
 

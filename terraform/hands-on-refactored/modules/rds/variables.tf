@@ -14,17 +14,17 @@ variable "db_name" {
   type        = string
 }
 
-variable "database_user" {
+variable "username" {
   description = "database user"
   type        = string
 }
 
-variable "database_password" {
+variable "password" {
   description = "database_password"
   type        = string
 }
 
-variable "database_port" {
+variable "port" {
   description = "database_port"
   type        = string
 }

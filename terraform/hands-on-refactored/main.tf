@@ -14,10 +14,10 @@ module "rds" {
   source                 = "./modules/rds"
   depends_on             = [module.vpc]
   create_monitoring_role = false
-  db_name                = var.database_name
-  database_password      = var.database_password
-  database_port          = var.database_port
-  database_user          = var.database_user
+  db_name                = var.db_name
+  password               = var.password
+  username               = var.username
+  port                   = var.port
   rds_tags_environment   = var.env
   backup_window          = "03:00-06:00"
   monitoring_role_name   = "MyRDSMonitoringRole"

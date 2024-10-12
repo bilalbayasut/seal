@@ -40,25 +40,25 @@ variable "enable_vpn_gateway" {
   type        = bool
 }
 
-variable"aws_region" {
+variable "aws_region" {
   description = "aws_region"
   type        = string
 }
 
 # rds
-variable "database_name" {
+variable "db_name" {
   description = "database name"
   type        = string
 }
-variable "database_user" {
+variable "username" {
   description = "database user"
   type        = string
 }
-variable "database_password" {
+variable "password" {
   description = "database_password"
   type        = string
 }
-variable "database_port" {
+variable "port" {
   description = "database_port"
   type        = string
 }
