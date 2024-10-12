@@ -8,13 +8,14 @@ module "db" {
   engine_version       = "8.0"
   major_engine_version = "8.0"
   # DB parameter group
-  family            = "mysql8.0"
-  instance_class    = "db.t3.micro"
-  allocated_storage = 5
-  db_name           = var.db_name
-  username          = var.database_user
-  password          = var.database_password
-  port              = var.database_port
+  family              = "mysql8.0"
+  instance_class      = "db.t3.micro"
+  allocated_storage   = 5
+  skip_final_snapshot = true
+  db_name             = var.db_name
+  username            = var.database_user
+  password            = var.database_password
+  port                = var.database_port
 
   iam_database_authentication_enabled = true
   storage_encrypted                   = false
