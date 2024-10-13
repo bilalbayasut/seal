@@ -34,6 +34,50 @@ resource "aws_subnet" "public1" {
   }
 }
 
+#internet gateway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.this.id
+
+  tags = {
+    Name = "upgrad-igw"
+  }
+}
+
+#elastic ip
+resource "aws_eip" "eip" {
+  domain = "vpc"
+}
+
+#nat gateway
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.eip.id
+  subnet_id     = aws_subnet.public1.id
+
+  tags = {
+    Name = "upgrad-nat"
+  }
+}
+
+#public route table
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.this.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "public-rt"
+  }
+}
+
+#route table association
+resource "aws_route_table_association" "public1" {
+  subnet_id      = aws_subnet.public1.id
+  route_table_id = aws_route_table.public.id
+}
+
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic"
@@ -68,12 +112,39 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_instance" "wordpress" {
-  ami                         = "ami-053b0d53c279acc90"
-  instance_type               = "t2.micro"
+locals {
+  instances = {
+    instance1 = {
+      ami           = data.aws_ami.ubuntu.id
+      instance_type = "t2.micro"
+    }
+    instance2 = {
+      ami           = data.aws_ami.ubuntu.id
+      instance_type = "t2.micro"
+    }
+    instance3 = {
+      ami           = data.aws_ami.ubuntu.id
+      instance_type = "t2.micro"
+    }
+  }
+}
+
+resource "aws_instance" "this" {
+  for_each                    = local.instances
+  ami                         = each.value.ami
+  instance_type               = each.value.instance_type
   key_name                    = aws_key_pair.deployer.key_name
   subnet_id                   = aws_subnet.public1.id
   security_groups             = [aws_security_group.allow_ssh.id]
   associate_public_ip_address = true
 
+  tags = {
+    Name = each.key
+  }
+
+}
+
+resource "local_file" "inventory" {
+  content  = "[webservers]\n${join("\n", [for instance in aws_instance.this : instance.public_ip])}"
+  filename = "inventory.ini"
 }
