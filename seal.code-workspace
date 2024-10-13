@@ -1,8 +1,10 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "ansible.python.interpreterPath": "/Users/bilal/.pyenv/versions/3.12.1/bin/python"
+  }
 }
