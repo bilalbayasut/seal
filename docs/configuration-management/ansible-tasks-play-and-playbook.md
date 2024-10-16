@@ -16,7 +16,7 @@
 **Example Task:**
 
 ```yaml
-yamlCopy code- name: Install Nginx
+name: Install Nginx
   apt:
     name: nginx
     state: present
@@ -118,7 +118,7 @@ The necessary files for this step should have appeared magically and you don't e
 
 We assume we have the following inventory file (let's name it `hosts`):
 
-```
+```ini
 [web]
 host1
 ```
@@ -129,7 +129,7 @@ Note: remember you can (and in our exercise we do) use `ansible_host` to set the
 
 Lets build a playbook that will install apache on machines in the `web` group.
 
-```
+```yaml
 - hosts: web
   tasks:
     - name: Installs apache web server
@@ -147,7 +147,7 @@ All in all, this was quite easy!
 
 You can run the playbook (lets call it `apache.yml`):
 
-```
+```bash
 ansible-playbook -i step-04/hosts -l host1 step-04/apache.yml
 ```
 
@@ -155,7 +155,7 @@ Here, `step-04/hosts` is the inventory file, `-l` limits the run only to `host1`
 
 When you run the above command, you should see something like:
 
-```
+```bash
 PLAY [web] *********************
 
 GATHERING FACTS *********************
@@ -178,7 +178,7 @@ PLAY [web] *********************
 
 Ansible tells us it's running the play on hosts `web`. A play is a suite of ansible instructions related to a host. If we'd have another `- hosts: blah` line in our playbook, it would show up too (but after the first play has completed).
 
-```
+```bash
 GATHERING FACTS *********************
 ok: [host1]
 ```
@@ -201,7 +201,7 @@ Finally, ansible outputs a recap of what happened: two tasks have been run and o
 
 Now let's try to run it again and see what happens:
 
-```
+```bash
 $ ansible-playbook -i step-04/hosts -l host1 step-04/apache.yml
 
 PLAY [web] *********************

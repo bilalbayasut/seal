@@ -20,7 +20,7 @@ Terraform workflow consist of threes stages :&#x20;
 2. **Plan:**  Terraform create execution plan simulating what resources will be changed.
 3. **Apply:** Terraform performs changes that was planned, on approval.
 
-<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Why Terraform ?
 

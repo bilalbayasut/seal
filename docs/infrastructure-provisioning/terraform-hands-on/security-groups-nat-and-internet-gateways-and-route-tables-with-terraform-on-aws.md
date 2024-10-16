@@ -2,7 +2,7 @@
 
 After creating all resources over Terraform. Now, go to the EC2 instance that you have created, click the **Connect** button in the right corner of the page. Select the **SSH client method** option. In the **Command line client** section, copy the command that is provided. Open a terminal window and paste the command. Press Enter to connect to your EC2 instance.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Once you have successfully SSHed into your EC2 instance, install **Docker and Docker Compose**. To do this, you can find all the commands for [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04) and [Docker compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04) .
 
