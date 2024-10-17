@@ -144,6 +144,7 @@ resource "aws_instance" "this" {
 
 }
 
+# generate static inventory file
 resource "local_file" "inventory" {
   content  = "[webservers]\n${join("\n", [for instance in aws_instance.this : instance.public_ip])}"
   filename = "inventory.ini"

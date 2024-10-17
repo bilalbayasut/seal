@@ -1,0 +1,12 @@
+plugin: amazon.aws.aws_ec2
+# aws_access_key: xxxxx
+# aws_secret_key: xxxxx
+# The values for profile, access key, secret key and token can be hardcoded like:
+# profile: aws_profile
+profile: "{{ lookup('env', 'AWS_PROFILE') | default('default', true) }}"
+regions:
+  - us-east-1
+hostnames:
+  - ip-address
+keyed_groups:
+  - key: tags.inventory_group

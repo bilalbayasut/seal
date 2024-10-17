@@ -1,0 +1,96 @@
+---
+- name: Install Docker, Docker Compose, and Spin up WordPress Container
+  hosts: all
+  become: true
+
+  tasks:
+    # Step 1: Install prerequisites for Docker
+    - name: Install required packages for Docker
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+        update_cache: yes
+
+    # Step 2: Add Docker GPG key
+    - name: Add Docker’s official GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    # Step 3: Set up Docker stable repository
+    - name: Add Docker repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    # Step 4: Install Docker
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
+
+    # Step 5: Install Docker Compose
+    - name: Install Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+        dest: /usr/local/bin/docker-compose
+        mode: "0755"
+
+    # Step 6: Start and enable Docker service
+    - name: Ensure Docker is started and enabled
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    # Step 7: Create directory for WordPress setup
+    - name: Create a directory for WordPress
+      file:
+        path: /opt/wordpress
+        state: directory
+        mode: "0755"
+
+    # Step 8: Create a Docker Compose file for WordPress and MySQL
+    - name: Create Docker Compose file for WordPress and MySQL
+      copy:
+        dest: /opt/wordpress/docker-compose.yml
+        content: |
+          version: '3'
+          services:
+            db:
+              image: mysql:5.7
+              volumes:
+                - db_data:/var/lib/mysql
+              restart: always
+              environment:
+                MYSQL_ROOT_PASSWORD: example_root_password
+                MYSQL_DATABASE: wordpress
+                MYSQL_USER: wordpress_user
+                MYSQL_PASSWORD: example_password
+
+            wordpress:
+              image: wordpress:latest
+              depends_on:
+                - db
+              ports:
+                - "8080:80"
+              restart: always
+              environment:
+                WORDPRESS_DB_HOST: db:3306
+                WORDPRESS_DB_USER: wordpress_user
+                WORDPRESS_DB_PASSWORD: example_password
+                WORDPRESS_DB_NAME: wordpress
+
+          volumes:
+            db_data: {}
+
+    # Step 9: Run the Docker Compose
+    - name: Run Docker Compose to spin up WordPress and MySQL
+      command: docker-compose up -d
+      args:
+        chdir: /opt/wordpress
