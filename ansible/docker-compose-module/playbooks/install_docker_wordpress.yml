@@ -79,8 +79,18 @@
           volumes:
             db_data: {}
 
-    # Step 9: Run the Docker Compose
-    - name: Run Docker Compose to spin up WordPress and MySQL
-      command: docker-compose up -d
-      args:
-        chdir: /opt/wordpress
+    # # Step 9: Run the Docker Compose
+    # - name: Run Docker Compose to spin up WordPress and MySQL
+    #   command: docker-compose up -d
+    #   args:
+    #     chdir: /opt/wordpress
+    - name: Run `docker-compose up`
+      community.docker.docker_compose_v2:
+        project_src: /opt/wordpress/
+        build: always
+        wait: true
+        docker_cli: /usr/bin/docker
+      register: output
+    - name: Show results
+      ansible.builtin.debug:
+        var: output
