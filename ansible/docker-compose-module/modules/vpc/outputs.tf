@@ -20,6 +20,11 @@ output "rds_subnet_group_ids" {
   value       = [aws_db_subnet_group.rds_subnet_group.id]
 }
 
+output "aws_instance_public_ip" {
+  description = "aws_instances"
+  value       = aws_instance.wordpress.public_ip
+}
+
 # output "private_subnets" {
 #   description = "The private subnets of the VPC"
 #   value       = module.vpc.private_subnets

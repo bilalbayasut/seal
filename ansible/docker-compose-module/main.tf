@@ -41,7 +41,30 @@ EOT
   filename = "${path.module}/env.yml"
 }
 
+# execute ansible command
+resource "null_resource" "execute_ansible" {
+  depends_on = [module.rds, module.vpc]
+  provisioner "remote-exec" {
+    connection {
+      host        = module.vpc.aws_instance_public_ip
+      user        = "ubuntu"
+      private_key = file("${path.module}/${var.key_name}.pem")
+    }
+
+    inline = ["echo 'connected!'"]
+  }
+
+  provisioner "local-exec" {
+    command     = "ansible-playbook ./playbooks/install_docker_wordpress.yml --extra-vars '@env.yml'"
+    working_dir = path.module
+  }
+}
+
 # Outputs (Optional)
 output "db_host" {
   value = module.rds.rds_endpoint
+}
+
+output "wordpress_url" {
+  value = "http://${module.vpc.aws_instance_public_ip}"
 }
