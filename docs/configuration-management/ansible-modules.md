@@ -6,7 +6,7 @@ Modules (also referred to as “task plugins” or “library plugins”) are di
 
 You can execute modules from the command line.
 
-```
+```bash
 ansible webservers -m service -a "name=httpd state=started"
 ansible webservers -m ping
 ansible webservers -m command -a "/sbin/reboot -t now"

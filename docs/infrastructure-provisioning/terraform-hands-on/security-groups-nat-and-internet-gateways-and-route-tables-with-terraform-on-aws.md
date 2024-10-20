@@ -16,7 +16,7 @@ Create a Docker compose file with a name of your choice. The file extension shou
 
 let’s name it docker-compose.yml and save it with following content:
 
-```
+```yaml
 version: "3"
 
 services:
