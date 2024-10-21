@@ -1,7 +1,7 @@
 ---
 cover: >-
   https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw1fHxhbWF6b24lMjBzZXJ2ZXJ8ZW58MHx8fHwxNzI5NDg2NDc5fDA&ixlib=rb-4.0.3&q=85
-coverY: 0
+coverY: -150
 ---
 
 # Configure AWS EC2 Server with Ansible
@@ -39,6 +39,3 @@ you will see something like :-
   |  |--54.90.93.162
 (.venv) 
 ```
-
-
-
