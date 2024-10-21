@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1593720219128-218edc93bdc0?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwyfHxjb25maWd1cmF0aW9ufGVufDB8fHx8MTcyOTQ4NjQxMHww&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Installation & Configuration of Ansible
 
 To start using Ansible, you will need to install it on a control node, this could be your laptop for example. From this control node, Ansible will connect and manage other machines and orchestrate different tasks.

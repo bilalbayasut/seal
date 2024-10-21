@@ -1,5 +1,22 @@
 ---
 description: Understanding terraform
+cover: >-
+  https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw0fHxkYXRhJTIwY2VudGVyfGVufDB8fHx8MTcyOTQ4NjEwOXww&ixlib=rb-4.0.3&q=85
+coverY: 80
+layout:
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # What is Terraform ? How it works ?

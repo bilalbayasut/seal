@@ -1,3 +1,7 @@
+---
+coverY: 0
+---
+
 # Ansible Tasks, Play & Playbook
 
 ## Difference between Ansible task, play and playbook

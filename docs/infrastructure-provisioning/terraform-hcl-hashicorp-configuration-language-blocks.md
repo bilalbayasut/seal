@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1587654780291-39c9404d746b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw5fHxsZWdvJTIwYmxvY2tzfGVufDB8fHx8MTcyOTQ4NjE5MXww&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Terraform: HCL (HashiCorp Configuration Language) Blocks
 
 ## Terraform Block Types
@@ -19,19 +25,140 @@ We will go over basic structure and purpose of each block. Once we are familiar 
 
 ## terraform block
 
+Terraform block is used for setting the version of the terraform we want. It may also contain `required_providers` block inside which specifies the versions of the providers we need as well as where Terraform should download these providers from. Terraform block is often put into a separate file called `terraform.tf` as a way to separate settings into their own file.
+
+Here is an example of a terraform block:
+
+```hcl
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 2.0"
+    }
+  }
+  required_version = ">= 1.0.1"
+}
+
+```
+
 ## provider block
+
+Provider blocks specifies special type of module that allows Terraform to interact with various cloud-hosting platforms or data centers. Providers must be configured with proper credentials before we can use them. In previous article we exported access key into our environment and that allowed us to deploy resources. Versions and download locations of providers are often specified inside the `terraform` block, but you can also specify it inside this block as well.
+
+<pre class="language-hcl"><code class="lang-hcl"><strong>provider "aws" {
+</strong>  version = "~> 3.0"
+  region = "us-east-1"
+}
+
+</code></pre>
 
 ## resource block
 
+Resource blocks are used to manage resources such as compute instances, virtual networks, databases, buckets, or DNS resources. This block type is the backbone of any terraform configuration because it represents actual resources with majority of other block types playing supporting role.
+
+```hcl
+resource "aws_instance" "example_resource" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+
+
 ## variable block
+
+This block is often called an input variable block. Variable block provides parameters for terraform modules and allow users to customize the data provided to other terraform modules without modifying the source.
+
+Variables are often in their own file called `variables.tf`. To use a variable it needs to be declared as a block. One block for each variable.
+
+```hcl
+
+variable "example_variable" {
+  type = var_type
+  description = var_description 
+  default = value_1 
+  sensitive = var_boolean_value 
+}
+```
+
+Terraform has a strict order of precedence for variable setting. Here it is, from highest to lowest:
+
+1. Command line (`-var` and `var-file`)
+2. `*.auto.tfvars` or `*auto.tfvars.json`
+3. `terraform.tfvars.json`
+4. `terraform.tfvars` file
+5. Env variables
+6. Variable defaults
 
 ## locals block
 
+Often called local variables block, this block is used to keep frequently referenced values or expressions to keep the code clean and tidy.
+
+Locals block can hold many variables inside. Expressions in local values aren not limited to literal constants. They can also reference other values in the module to transform or combine them. These variables can be accessed using `local.var_name` notation, note that it is called `local.` when used to access values inside.
+
+```hcl
+locals {
+
+  service_name = "forum"
+
+  owner        = "Community Team"
+
+  instance_ids = concat(aws_instance.blue..id, aws_instance.green..id)
+
+}
+```
+
 ## data block
+
+Data block's primary purpose is to load or query data from APIs other than Terraform's. It can be used to provide flexibility to your configuration or to connect different workspaces. One way we would use data block in future articles is to query AWS API to get a list of active Availability Zones to deploy resources in.
+
+Data is then accessed using dot notation using `var` identifier. For example: `var.variable_1`
+
+<pre class="language-hcl"><code class="lang-hcl"><strong>data "data_type" "data_name" {
+</strong>
+  variable_1 = expression
+
+}
+</code></pre>
 
 ## module block
 
+Modules are containers for multiple resources that are used together. A module consists of `.tf` and/or `.tf.json` files stored in a directory. It is the primary way to package and reuse resources in Terraform.
+
+Every Terraform configuration has at least one model (root module) which contains resources defined in the `.tf` files. Test configuration we created in the third part of these series is a module.
+
+Modules are a great way to compartmentalize reusable collections of resources in multiple configurations.
+
+Here is an example of a module:\
+[![Image description](https://media.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F32dp7v0od58x78hsyrhi.jpeg)](https://media.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F32dp7v0od58x78hsyrhi.jpeg)
+
 ## output block
+
+This is a block which is almost always present in all configurations, along with `main.tf` and `variables.tf` block. It allows Terraform to output structured data about your configuration. This output can be used by users to see data like IPs or resources names in one convenient place. Another use case involves using this data in other Terraform workspace or sharing data between modules.
+
+<pre class="language-hcl"><code class="lang-hcl"><strong>output "test_server_public_ip" {
+</strong>
+  description = "My test output for EC2 public IP"
+
+  value = aws_instance.test_web_server.public_ip
+
+  sensitive = true
+
+}
+
+output "public_url" {
+
+  description = "Public URL for my web server"
+
+  value = "https://${aws_instance.test_web_server.public_ip}:8000/index.html"
+
+}
+</code></pre>
 
 ## null\_resource block
 

@@ -2,6 +2,9 @@
 description: >-
   Refactor existing project for production ready. Using workspace, environment
   variables, terraform outputs, modules.
+cover: >-
+  https://images.unsplash.com/photo-1503147658877-b6636154a299?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxMHx8cHJvZHVjdGlvbnxlbnwwfHx8fDE3Mjk0ODYzMzZ8MA&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
 # Terraform Hands On: Refactor to production ready

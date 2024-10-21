@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1603508102977-02688e3265fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxrZXlzfGVufDB8fHx8MTcyOTQ4NjQ5N3ww&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Managing Host Key Checking and SSH Keys
 
 #### **What is Host Key Checking in SSH?**

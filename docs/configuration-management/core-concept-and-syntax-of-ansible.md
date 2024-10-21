@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1639066648921-82d4500abf1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxMHx8c2VydmVyc3xlbnwwfHx8fDE3Mjk0ODYzNjh8MA&ixlib=rb-4.0.3&q=85
+coverY: 436
+---
+
 # Core Concept & Syntax of Ansible
 
 ### [Control node](https://docs.ansible.com/ansible/latest/network/getting\_started/basic\_concepts.html#id1)

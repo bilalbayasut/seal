@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1532200547849-1e9352d72b98?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw0fHxjb21tYW5kc3xlbnwwfHx8fDE3Mjk0ODY0NTR8MA&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Ansible ad-hoc Commands
 
 An Ansible ad hoc command uses the _/usr/bin/ansible_ command-line tool to automate a single task on one or more managed nodes. ad hoc commands are quick and easy, but they are not reusable. So why learn about ad hoc commands? ad hoc commands demonstrate the simplicity and power of Ansible.

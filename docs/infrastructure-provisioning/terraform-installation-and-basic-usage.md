@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1501608007014-6af9282011ca?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw2fHxpbnN0YWxsYXRpb258ZW58MHx8fHwxNzI5NDg2MTQ3fDA&ixlib=rb-4.0.3&q=85
+coverY: 395
+---
+
 # Terraform: Installation & Basic Usage
 
 ## Terraform Installation
@@ -58,6 +64,14 @@ The `terraform state list` command is used to list resources within a [Terraform
 The `terraform state show` command is used to show the attributes of a single resource in the [Terraform state](https://developer.hashicorp.com/terraform/language/state).
 
 ### Terraform `destroy` command
+
+{% code overflow="wrap" %}
+```bash
+terraform destroy -var-file=staging.env --auto-approve
+```
+{% endcode %}
+
+
 
 ## Terraform Language Syntax
 

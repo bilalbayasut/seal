@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1712696779652-dfca8766c5f8?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwyfHxibHVlcHJpbnR8ZW58MHx8fHwxNzI5NDg2Mjg1fDA&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Architecture
 
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>

@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1529454516905-415953c10f97?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxfHxjb25kaXRpb258ZW58MHx8fHwxNzI5NDg2MjMwfDA&ixlib=rb-4.0.3&q=85
+coverY: 129
+---
+
 # Terraform State
 
 Terraform state is a record of the managed infrastructure. Each time you make an execution plan and attempt to create or modify resource, Terraform will compare your configuration to the existing state.

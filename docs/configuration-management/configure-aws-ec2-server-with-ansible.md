@@ -1,3 +1,9 @@
+---
+cover: >-
+  https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw1fHxhbWF6b24lMjBzZXJ2ZXJ8ZW58MHx8fHwxNzI5NDg2NDc5fDA&ixlib=rb-4.0.3&q=85
+coverY: 0
+---
+
 # Configure AWS EC2 Server with Ansible
 
 We use an ansible plugin called dynamic inventory to automatically populate our inventory instead of manually relying on updating inventory file manually. Here are what it does:-
@@ -6,8 +12,6 @@ We use an ansible plugin called dynamic inventory to automatically populate our 
 * The inventory file is a YAML configuration file and must end with `aws_ec2.{yml|yaml}`. Example: `my_inventory.aws_ec2.yml`.
 
 > <mark style="color:red;">IMPORTANT!</mark> : Make sure the the inventory yaml file must end with `aws_ec2.{yml|yaml}`. Example: `my_inventory.aws_ec2.yml`.
-
-
 
 ### [Requirements](https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws\_ec2\_inventory.html#id2)
 
