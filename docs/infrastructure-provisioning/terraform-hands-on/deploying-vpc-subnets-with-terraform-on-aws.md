@@ -256,7 +256,7 @@ resource "aws_db_instance" "rds_instance" {
   identifier                = "my-rds-instance"
   db_name                   = "wordpress_db"
   username                  = "bilal"
-  password                  = "bilal123$"
+  password                  = "Bilal123456"
   db_subnet_group_name      = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids    = [aws_security_group.rds_security_group.id]
 
