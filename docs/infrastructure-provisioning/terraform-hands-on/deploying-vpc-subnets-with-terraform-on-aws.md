@@ -254,7 +254,7 @@ resource "aws_db_instance" "rds_instance" {
   instance_class            = "db.t3.micro"
   allocated_storage         = 20
   identifier                = "my-rds-instance"
-  db_name                   = "wordpress_db"
+  db_name                   = "wordpressdb"
   username                  = "bilal"
   password                  = "Bilal123456"
   db_subnet_group_name      = aws_db_subnet_group.rds_subnet_group.name
