@@ -119,3 +119,4 @@ Both are essential for successfully baking the cake, just as modules and plugins
 
 ## Hands On: Let's use docker compose plugin
 
+you can check the repo on how to start!

@@ -31,3 +31,7 @@
 * [Conditionals](configuration-management/conditionals.md)
 * [Privilege Escalation](configuration-management/privilege-escalation.md)
 * [Ansible Configuration - Default Inventory File](configuration-management/ansible-configuration-default-inventory-file.md)
+
+***
+
+* [Copyrights](copyrights.md)
