@@ -15,8 +15,8 @@
 
 ## Configuration Management
 
-* [Core Concept & Syntax of Ansible](configuration-management/core-concept-and-syntax-of-ansible.md)
 * [Introduction to Ansible](configuration-management/introduction-to-ansible.md)
+* [Core Concept & Syntax of Ansible](configuration-management/core-concept-and-syntax-of-ansible.md)
 * [Installation & Configuration of Ansible](configuration-management/installation-and-configuration-of-ansible.md)
 * [Ansible Inventory](configuration-management/ansible-inventory.md)
 * [Ansible ad-hoc Commands](configuration-management/ansible-ad-hoc-commands.md)
