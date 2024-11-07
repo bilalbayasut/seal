@@ -83,7 +83,7 @@ web2.example.com ansible_ssh_private_key_file=/path/to/private/key2.pem
 *   **Within a Playbook:**
 
     ```yaml
-    yamlCopy code- name: Deploy application
+    name: Deploy application
       hosts: webservers
       vars:
         private_key_file: /path/to/deployment/key.pem
@@ -95,7 +95,7 @@ web2.example.com ansible_ssh_private_key_file=/path/to/private/key2.pem
 *   **Within a Role:**
 
     ```yaml
-    yamlCopy code# roles/deploy/tasks/main.yml
+    # roles/deploy/tasks/main.yml
     - name: Upload SSH key
       copy:
         src: "{{ private_key_file }}"
