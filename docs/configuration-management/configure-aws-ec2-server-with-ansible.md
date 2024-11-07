@@ -23,9 +23,9 @@ The below requirements are needed on the local controller node that executes thi
 
 Run this to install the plugin via ansible galaxy
 
-```bash
-ansible-galaxy collection install amazon.aws
-```
+<pre class="language-bash"><code class="lang-bash"><strong># optional, didn't need to run this to get it working
+</strong><strong>ansible-galaxy collection install amazon.aws
+</strong></code></pre>
 
 you will see something like :-
 
