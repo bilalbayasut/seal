@@ -44,7 +44,7 @@ _This task installs the Nginx web server using the `apt` module._
 **Example Play:**
 
 ```yaml
-yamlCopy code- name: Configure Web Servers
+- name: Configure Web Servers
   hosts: webservers
   become: yes
   tasks:
@@ -78,7 +78,6 @@ _This play targets the `webservers` group, installs Nginx, and ensures the Nginx
 **Example Playbook:**
 
 ```yaml
-yamlCopy code---
 - name: Configure Web Servers
   hosts: webservers
   become: yes
